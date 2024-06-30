@@ -1,0 +1,26 @@
+<div class="p-col-12 p-md-6 p-lg-3">
+  <p-card class="custom-card" styleClass="w-75 h-50">
+      <ng-template pTemplate="header">
+          <div class="header-content p-d-flex p-ai-center p-jc-between">
+              <h2 class="job-title text-primary">{{ job.title }}</h2>
+              <p-badge value="New" severity="info" *ngIf="isNewJob(job.publication_date.toString())"></p-badge>
+          </div>
+      </ng-template>
+      <div class="p-card-content">
+          <p class="company-info">{{ job.company_name }}, {{ job.candidate_required_location }}</p>
+          <p class="post-date">Posted on: {{ job.publication_date }}</p>
+          <p class="work-location"><i class="pi pi-map-marker"></i> {{ job.job_type }}</p>
+          <div class="skills-container mt-3">
+              <span *ngFor="let skill of job.tags" class="badge badge-primary mr-1 mb-1 text-muted">
+                  {{ skill }}
+              </span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+              <button pButton type="button" class="btn btn-outline-primary" (click)="applyfn()">
+                  <i class="pi pi-send mr-2"></i>Apply Now
+              </button>
+              <span class="applied-users-count text-primary"><i class="pi pi-users"></i> {{ job.salary }} applied</span>
+          </div>
+      </div>
+  </p-card>
+</div>

@@ -1,0 +1,32 @@
+.modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .modal-header {
+    border-bottom: none;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .job-details p {
+    margin-bottom: 10px;
+  }
+  
+  .modal-footer {
+    border-top: none;
+    justify-content: space-between;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
