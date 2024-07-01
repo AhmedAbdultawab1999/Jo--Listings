@@ -34,18 +34,12 @@ export class NavbarComponent {
         {
           label: 'Jobs',
           icon: 'pi pi-fw pi-briefcase',
-          items: [
-            { label: 'All Jobs', icon: 'pi pi-fw pi-list', routerLink: ['/jobs'] },
-            { label: 'New Job', icon: 'pi pi-fw pi-plus', routerLink: ['/jobs/new'] }
-          ]
+          routerLink: ['jobs']
         },
         {
           label: 'Saved',
           icon: 'pi pi-fw pi-save',
-          items: [
-            { label: 'All Candidates', icon: 'pi pi-fw pi-list', routerLink: ['/saved'] },
-            { label: 'New Candidate', icon: 'pi pi-fw pi-plus', routerLink: ['/saved'] }
-          ]
+          routerLink: ['/saved']
         },
         {
           label: 'Applied',

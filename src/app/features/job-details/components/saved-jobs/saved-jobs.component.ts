@@ -2,13 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalJobDetailsComponent } from '../../../modal-job-details/modal-job-details.component';
 import { Job } from '../../../../core/models/jobs';
 import { JobCartComponent } from "../../../job-listings/components/job-cart/job-cart.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-saved-jobs',
     standalone: true,
     templateUrl: './saved-jobs.component.html',
     styleUrl: './saved-jobs.component.scss',
-    imports: [JobCartComponent, ModalJobDetailsComponent]
+    imports: [JobCartComponent, ModalJobDetailsComponent, CommonModule]
 })
 export class SavedJobsComponent implements OnInit{
   displayedJobs: Job[] = [];
@@ -31,6 +32,8 @@ export class SavedJobsComponent implements OnInit{
       } else {
         this.displayedJobs = [];
       }
+      console.log(this.displayedJobs);
+      
   }
 
   openModal(job: Job) {

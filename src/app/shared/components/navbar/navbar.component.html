@@ -1,30 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mercado-match" width="24" height="24">
-          <path d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z"></path>
-        </svg>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" *ngFor="let item of items">
-            <a class="nav-link" [routerLink]="[item.routerLink]" routerLinkActive="active">
-              <i [ngClass]="item.icon"></i>
-              {{ item.label }}
-              <span *ngIf="item.badge" class="badge bg-success ms-2">{{ item.badge }}</span>
-            </a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search Jobs" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <button class="btn btn-success ms-3" type="button">Post a Job <i class="pi pi-plus ms-2"></i></button>
-        <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="rounded-circle ms-3" width="40" height="40" alt="Avatar">
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mercado-match" width="24" height="24">
+        <path d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z"></path>
+      </svg>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let item of items">
+          <a class="nav-link" [routerLink]="item.routerLink" routerLinkActive="active">
+            <i [ngClass]="item.icon"></i>
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search Jobs" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <button class="btn btn-success ms-3" type="button">Post a Job <i class="pi pi-plus ms-2"></i></button>
+      <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="rounded-circle ms-3" width="40" height="40" alt="Avatar">
     </div>
-  </nav>
-  
+  </div>
+</nav>
