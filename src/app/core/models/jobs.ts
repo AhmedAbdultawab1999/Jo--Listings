@@ -5,7 +5,7 @@ export interface JobsResponse {
 }
 
 export interface Job {
-    id:                          number;
+    id:                          any;
     url:                         string;
     title:                       string;
     company_name:                string;

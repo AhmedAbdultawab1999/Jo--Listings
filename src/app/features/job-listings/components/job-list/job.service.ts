@@ -11,8 +11,18 @@ export class JobService {
   private apiUrl = 'https://remotive.io/api/remote-jobs'; // ?search=developer&category=software-dev
 
   constructor(private http: HttpClient) { }
-
-  getJobs(limit: number): Observable<JobsResponse> {
-    return this.http.get<JobsResponse>(`${this.apiUrl}?limit=${limit}`);
+  getJobs(limit: number, search?: string, category?: string): Observable<JobsResponse> {
+    let url = `${this.apiUrl}?limit=${limit}`;
+  
+    if (search?.trim()) {
+      url += `&search=${encodeURIComponent(search.trim())}`;
+    }
+    
+    if (category?.trim()) {
+      url += `&category=${encodeURIComponent(category.trim())}`;
+    }
+  
+    return this.http.get<JobsResponse>(url);
   }
+  
 }

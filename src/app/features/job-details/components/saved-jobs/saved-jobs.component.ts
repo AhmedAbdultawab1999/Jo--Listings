@@ -3,37 +3,33 @@ import { ModalJobDetailsComponent } from '../../../modal-job-details/modal-job-d
 import { Job } from '../../../../core/models/jobs';
 import { JobCartComponent } from "../../../job-listings/components/job-cart/job-cart.component";
 import { CommonModule } from '@angular/common';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    selector: 'app-saved-jobs',
-    standalone: true,
-    templateUrl: './saved-jobs.component.html',
-    styleUrl: './saved-jobs.component.scss',
-    imports: [JobCartComponent, ModalJobDetailsComponent, CommonModule]
+  selector: 'app-saved-jobs',
+  standalone: true,
+  templateUrl: './saved-jobs.component.html',
+  styleUrls: ['./saved-jobs.component.scss'],
+  imports: [JobCartComponent, ModalJobDetailsComponent, CommonModule, NgbToastModule]
 })
-export class SavedJobsComponent implements OnInit{
+export class SavedJobsComponent implements OnInit {
   displayedJobs: Job[] = [];
-  private jobsToShow = 5;
-  private currentIndex = 0;
-  loading = false;
   jobsHasLoaded = false;
-  @ViewChild('jobModal')
-  jobModal!: ModalJobDetailsComponent;
+  toastMessage: string | null = null;
+  @ViewChild('jobModal') jobModal!: ModalJobDetailsComponent;
 
-
-  constructor() {
-  }
   ngOnInit(): void {
+    this.loadSavedJobs();
+  }
+
+  loadSavedJobs(): void {
     const savedJobs = localStorage.getItem('savedJobs');
-      
-      // If savedJobs is null, initialize displayedJobs as an empty array
-      if (savedJobs) {
-        this.displayedJobs = JSON.parse(savedJobs) as Job[];
-      } else {
-        this.displayedJobs = [];
-      }
-      console.log(this.displayedJobs);
-      
+    if (savedJobs) {
+      this.displayedJobs = JSON.parse(savedJobs) as Job[];
+    } else {
+      this.displayedJobs = [];
+    }
+    this.jobsHasLoaded = true;
   }
 
   openModal(job: Job) {
@@ -41,4 +37,19 @@ export class SavedJobsComponent implements OnInit{
     this.jobModal.showDialog();
   }
 
+  deleteJob(jobId: string) {
+    let savedJobs = localStorage.getItem('savedJobs');
+    if (savedJobs) {
+      let jobsArray = JSON.parse(savedJobs);
+      jobsArray = jobsArray.filter((job: Job) => job.id !== jobId);
+      localStorage.setItem('savedJobs', JSON.stringify(jobsArray));
+      this.displayedJobs = jobsArray; // Update the displayedJobs array to reflect changes
+      this.showToast('Job deleted successfully');
+    }
+  }
+
+  showToast(message: string) {
+    this.toastMessage = message;
+    setTimeout(() => this.toastMessage = null, 3000); // Hide toast after 3 seconds
+  }
 }

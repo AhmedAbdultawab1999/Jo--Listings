@@ -1,26 +1,28 @@
 <ng-template #content let-modal>
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white d-flex justify-content-between">
-        <h4 class="modal-title">{{ job.title }}</h4>
-        <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true" class="text-dark bg">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="job-details">
-          <p><strong>Company:</strong> {{ job.company_name }}</p>
-          <p><strong>Location:</strong> {{ job.candidate_required_location }}</p>
-          <p><strong>Job Type:</strong> {{ job.job_type }}</p>
-          <p><strong>Publication Date:</strong> {{ job.publication_date | date }}</p>
-          <p><strong>Description:</strong> <span [innerHTML]="job.description"></span></p>
-          <p><strong>Salary:</strong> {{ job.salary }}</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="modal.close('Save click')">Apply</button>
-        <button type="button" class="btn btn-secondary" (click)="saveJob(job)">Save Job</button>
+  <div class="modal-content">
+    <div class="modal-header bg-primary text-white d-flex justify-content-between">
+      <h4 class="modal-title">{{ job.title }}</h4>
+      <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true" class="text-dark bg">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="job-details">
+        <p><strong>Company:</strong> {{ job.company_name }}</p>
+        <p><strong>Location:</strong> {{ job.candidate_required_location }}</p>
+        <p><strong>Job Type:</strong> {{ job.job_type }}</p>
+        <p><strong>Publication Date:</strong> {{ job.publication_date | date }}</p>
+        <p><strong>Description:</strong> <span [innerHTML]="job.description"></span></p>
+        <p><strong>Salary:</strong> {{ job.salary }}</p>
       </div>
     </div>
-  </ng-template>
-  
-  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="modal.close('Save click')">Apply</button>
+      <button type="button" class="btn btn-secondary" (click)="saveJob(job)">Save Job</button>
+    </div>
+  </div>
+</ng-template>
+
+<div class="card flex justify-content-center">
+  <p-toast></p-toast>
+</div>

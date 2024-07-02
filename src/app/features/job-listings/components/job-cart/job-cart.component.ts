@@ -17,18 +17,15 @@ import { Job } from '../../../../core/models/jobs';
 })
 export class JobCartComponent {
   @Input() job!: Job;
+  @Input() showDelete: boolean = false;
   @Output() apply = new EventEmitter<void>();
+  @Output() delete = new EventEmitter<string>();
 
   isNewJob(postDate: string): boolean {
-    // Convert postDate string to a Date object
     const postDateObj = new Date(postDate);
     const today = new Date();
-
-    // Calculate the difference in days
     const diffTime = Math.abs(today.getTime() - postDateObj.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    // Return true if the job was posted within the last 7 days
     return diffDays <= 7;
   }
 
@@ -38,5 +35,9 @@ export class JobCartComponent {
 
   applyfn() {
     this.apply.emit();
+  }
+
+  deleteSavedJob(jobId: any) {
+    this.delete.emit(jobId);
   }
 }
